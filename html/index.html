@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launchpad OBS control</title>
+    <link rel="stylesheet" href="./../fontawesome/css/all.css">
+    <link rel="stylesheet" href="./../css/mainWindow.css">
+</head>
+<body>
+    <div id="connectionWindow" class="">
+        <div id="connectionBox">
+            <label for="inputSelect">Input:</label>
+            <select name="inputSelect" id="inputSelectID">
+            </select>
+            
+            <label for="outputSelect">Output:</label>
+            <select name="outputSelect" id="outputSelectID">
+            </select>
+    
+            <label for="ipOBS">OBS IP:</label>
+            <input type="text" name="ipOBS" id="ipOBSID" value="ws://127.0.0.1:4455">
+    
+            <label for="passOBS">OBS Password:</label>
+            <input type="password" name="passOBS" id="passOBSID">
+
+            <br>
+    
+            <button class="connectionItem" onclick="selectMidi()">Connect</button>
+        </div>
+    </div>
+
+    <div id="menuWindow">
+        <div>
+            <div class="menuButton" onclick="SHMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+
+        <div id="menuList">
+            <div class="menuItem">
+                Input device
+                <br>
+                <div id="inputMenuInfo">
+                    PLH
+                </div>
+            </div>
+
+            <div class="menuItem">
+                Output device
+                <br>
+                <div id="outputMenuInfo">
+                    PLH
+                </div>
+            </div>
+
+            <div class="menuItem">
+                OBS Connection Status
+                <br>
+                <div id="OBSMenuInfo">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="mainWindow">
+
+        <div id="buttons">
+            <div class="col">
+                <div class="lButton" onclick="lButton(99)">
+    
+                </div>
+                <div class="lButton" onclick="lButton(98)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(97)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(96)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(95)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(94)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(93)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(92)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(91)">
+                    
+                </div>
+            </div>
+            <div class="col">
+                <div class="lButton" onclick="lButton(89)">
+    
+                </div>
+                <div class="lButton" onclick="lButton(88)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(87)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(86)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(85)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(84)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(83)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(82)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(81)">
+                    
+                </div>
+            </div>
+            <div class="col">
+                <div class="lButton" onclick="lButton(79)">
+    
+                </div>
+                <div class="lButton" onclick="lButton(78)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(77)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(76)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(75)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(74)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(73)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(72)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(71)">
+                    
+                </div>
+            </div>
+            <div class="col">
+                <div class="lButton" onclick="lButton(69)">
+    
+                </div>
+                <div class="lButton" onclick="lButton(68)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(67)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(66)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(65)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(64)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(63)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(62)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(61)">
+                    
+                </div>
+            </div>
+            <div class="col">
+                <div class="lButton" onclick="lButton(59)">
+    
+                </div>
+                <div class="lButton" onclick="lButton(58)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(57)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(56)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(55)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(54)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(53)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(52)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(51)">
+                    
+                </div>
+            </div>
+            <div class="col">
+                <div class="lButton" onclick="lButton(49)">
+    
+                </div>
+                <div class="lButton" onclick="lButton(48)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(47)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(46)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(45)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(44)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(43)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(42)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(41)">
+                    
+                </div>
+            </div>
+            <div class="col">
+                <div class="lButton" onclick="lButton(39)">
+    
+                </div>
+                <div class="lButton" onclick="lButton(38)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(37)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(36)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(35)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(34)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(33)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(32)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(31)">
+                    
+                </div>
+            </div>
+            <div class="col">
+                <div class="lButton" onclick="lButton(29)">
+    
+                </div>
+                <div class="lButton" onclick="lButton(28)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(27)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(26)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(25)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(24)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(23)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(22)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(21)">
+                    
+                </div>
+            </div>
+            <div class="col">
+                <div class="lButton" onclick="lButton(19)">
+    
+                </div>
+                <div class="lButton" onclick="lButton(18)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(17)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(16)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(15)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(14)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(13)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(12)">
+                    
+                </div>
+                <div class="lButton" onclick="lButton(11)">
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="settingsMenu" class="hiden">
+
+        <div id="settingsID">
+            <div id="settingsIDelement">
+                ID
+            </div>
+        </div>
+
+        <div id="settingsTop">
+            <div class="toggle">
+                <input type="radio" name="tg" value="record" id="recordRadio" checked="checked"/>
+                <label for="recordRadio">Record</label>
+                <input type="radio" name="tg" value="stream" id="streamRadio"/>
+                <label for="streamRadio">Stream</label>
+                <input type="radio" name="tg" value="vcam" id="vcamRadio"/>
+                <label for="vcamRadio">V Cam</label>
+                <input type="radio" name="tg" value="scene" id="sceneRadio"/>
+                <label for="sceneRadio">Scene</label>
+                <input type="radio" name="tg" value="source" id="sourceRadio"/>
+                <label for="sourceRadio">Source</label>
+                <input type="radio" name="tg" value="sound" id="soundRadio"/>
+                <label for="soundRadio">Sound</label>
+            </div>
+        </div>
+
+        <div id="settingsLeft">
+            <div class="toggle2">
+                <input type="radio" name="md" value="static" id="staticRadio" checked="checked"/>
+                <label for="staticRadio">Static</label>
+                <input type="radio" name="md" value="blink" id="blinkRadio"/>
+                <label for="blinkRadio">Blink</label>
+                <input type="radio" name="md" value="fade" id="fadeRadio"/>
+                <label for="fadeRadio">Fade</label>
+            </div>
+
+            <div class="colorSelect">
+                Color 1
+                <div class="colorBox"></div>
+            </div>
+
+            <div class="colorSelect">
+                Color 2
+                <div class="colorBox"></div>
+            </div>
+        </div>
+
+        <div id="settingsMain">
+
+        </div>
+
+        <div id="settingsButtons">
+            <div class="settingsButtonsBox">
+                <button class="settingsButton">Cancel</button>
+                <button class="settingsButton">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./../js/mainWindow.js"></script>
+</body>
+</html>

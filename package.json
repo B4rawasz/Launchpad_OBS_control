@@ -1,0 +1,33 @@
+{
+  "name": "launchpad_obs_control",
+  "version": "1.0.0",
+  "description": "Control OBS using Launchpad",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/B4rawasz/Launchpad_OBS_control.git"
+  },
+  "keywords": [
+    "OBS",
+    "Launchpad",
+    "JS"
+  ],
+  "author": "Barawasz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/B4rawasz/Launchpad_OBS_control/issues"
+  },
+  "homepage": "https://github.com/B4rawasz/Launchpad_OBS_control#readme",
+  "devDependencies": {
+    "electron": "^21.2.0"
+  },
+  "dependencies": {
+    "js-base64": "^3.7.2",
+    "js-sha256": "^0.9.0",
+    "webmidi": "^3.0.21",
+    "ws": "^8.11.0"
+  }
+}
