@@ -124,7 +124,7 @@ body{
 .col{
     display: flex;
     flex-grow: 1;
-    flex-direction: row-reverse;
+    flex-direction: row;
 }
 
 .lButton{

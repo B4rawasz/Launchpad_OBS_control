@@ -51,5 +51,36 @@ function SHMenu(){
 function lButton(num){
     document.getElementById("settingsMenu").classList.remove("hiden");
 
-    document.getElementById("settingsMenu").innerHTML = num;
+    let idBox = document.getElementById("settingsIDelement");
+
+    idBox.innerHTML = num;
+}
+
+//Hide button settings
+function hideSettings(){
+    document.getElementById("settingsMenu").classList.add("hiden");
+}
+
+/*****************************************************/
+//Web design
+
+let settingsButtons = document.getElementById("buttons");
+let v = 9;
+
+for (let i = 0; i < 9; i++) {
+    let row = document.createElement("div");
+    row.classList = "col";
+
+    for (let j = 0; j < 10; j++) {
+        let but = document.createElement("div");
+        but.classList = "lButton";
+        but.id = 10 * v + j;
+        but.onclick = function(){
+            lButton(this.id);
+        }
+
+        row.appendChild(but);
+    }
+    v--;
+    settingsButtons.appendChild(row);
 }

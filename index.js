@@ -144,6 +144,9 @@ function deserializeJSON(json){
     case 2:
       handleIdentified(message.d);
       break;
+    case 5:
+      handleEvent(message.d);
+      break;
   
     default:
       break;
@@ -184,4 +187,8 @@ function handleHello(data){
 
 function handleIdentified(data){
 
+}
+
+function handleEvent(data){
+  console.log(data);
 }
