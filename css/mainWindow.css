@@ -3,6 +3,7 @@
 z-index
     1000 - notification
     750 - connection menu
+    600 - colorpicker
     550 - button settings
     500 - left side menu
     10 - main window
@@ -16,6 +17,7 @@ z-index
     --orange-web: #fca311ff;
     --platinum: #e5e5e5ff;
     --white: #ffffffff;
+    --danger-red : #d72638ff;
 }
 
 /******************************/
@@ -44,6 +46,10 @@ body{
 #connectionBox{
     display: flex;
     flex-direction: column;
+}
+
+#rememberID{
+    align-self:flex-start;
 }
 
 /*******************************/
@@ -355,6 +361,64 @@ body{
     width: 80vw;
     height: 75vh;
     float: left;
+    display: flex;
+}
+
+.settingsMainWindow{
+    flex-grow: 1;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: var(--oxford-blue);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+
+.modeSettingsRSV .toggle2{
+    padding: 0;
+
+}
+
+.modeSettingsRSV .toggle2 input + label{
+    background-color: var(--oxford-blue-2);
+}
+
+.modeSettingsRSV .toggle2 input:checked + label {
+    background-color: var(--orange-web);
+    box-shadow: 0 0 10px var(--orange-web);
+    border-color: var(--orange-web);
+    z-index: 1;
+}
+
+.modeSettingsRSV{
+    flex-grow: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.animationSettingsDispRSV{
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.animationSettingsRSVblock{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.animationSettingsRSVblockText{
+    margin-right: 10px;
 }
 
 #settingsButtons{
@@ -397,14 +461,19 @@ body{
 
 .settingsButton:first-of-type {
     border-radius: 6px 0 0 6px;
+    background-color: var(--danger-red);
     /*border-right: none;*/
 }
 
 .settingsButton:last-of-type {
     border-radius: 0 6px 6px 0;
     background-color: var(--orange-web);
-    color: var(--black);
     /*border-left: none;*/
+}
+
+.settingsButton:hover:first-of-type{
+    box-shadow: 0 0 5px var(--danger-red);
+    z-index: 1;
 }
 
 .settingsButton:hover{
@@ -412,6 +481,110 @@ body{
     z-index: 1;
 }
 
+.stList{
+    flex-grow: 3;
+    display: flex;
+    justify-content: center;
+
+    flex-direction: column;
+}
+
+.stListBg{
+    flex-grow: 1;
+
+    border-radius: 5px;
+
+    margin: 10px;
+    margin-left: 0;
+
+    background-color: var(--oxford-blue-2);
+
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+
+    overflow: scroll;
+
+    border: 5px;
+    border-style: solid;
+    border-color: var(--oxford-blue-2);
+}
+
+.stListBg::-webkit-scrollbar {
+    display: none;
+}
+
+
+.toggle2.tgScene input + label{
+    width: 95%;
+}
+
+.toggle2.tgScene{
+    padding: 0;
+    padding-top: 7px;
+    flex-direction: column-reverse;
+}
+
+.tgScene.toggle2 input + label:first-of-type{
+    border-radius: 0 0 6px 6px;
+}
+
+.tgScene.toggle2 input + label:last-of-type{
+    border-radius: 6px 6px 0 0;
+}
+
+
+/*******************************/
+
+#mask{
+    z-index: 599;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+.colorPicker{
+    z-index: 600;
+    position: absolute;
+    height: 60vw;
+    width: 60vw;
+    max-height: 60vh;
+    max-width: 60vh;
+
+    padding: 3px;
+
+    left: 18vw;
+
+    border-radius: 10px;
+
+    background-color: var(--rich-black);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.cp1{
+    top: 5vh;
+}
+
+.cp2{
+    top: 25.5vh;
+}
+
+.cpCol{
+    flex-grow: 1;
+    display: flex;
+}
+
+.colorPickerBox{
+    flex-grow: 1;
+
+    margin: 2px;
+
+    border-radius: 5px;
+
+    background-color: gray;
+}
 /*************/
 .hiden{
     display: none !important;

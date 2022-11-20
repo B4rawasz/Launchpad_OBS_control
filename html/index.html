@@ -25,9 +25,12 @@
             <label for="passOBS">OBS Password:</label>
             <input type="password" name="passOBS" id="passOBSID">
 
+            <label for="remember">Remember Me</label>
+            <input type="checkbox" name="remember" id="rememberID">
+
             <br>
     
-            <button class="connectionItem" onclick="selectMidi()">Connect</button>
+            <button class="connectionItem" onclick="selectMidi()" id="connectButtonID">Connect</button>
         </div>
     </div>
 
@@ -84,7 +87,7 @@
 
         <div id="settingsTop">
             <div class="toggle">
-                <input type="radio" name="tg" value="record" id="recordRadio" checked="checked"/>
+                <input type="radio" name="tg" value="record" id="recordRadio"/>
                 <label for="recordRadio">Record</label>
                 <input type="radio" name="tg" value="stream" id="streamRadio"/>
                 <label for="streamRadio">Stream</label>
@@ -101,38 +104,137 @@
 
         <div id="settingsLeft">
             <div class="toggle2">
-                <input type="radio" name="md" value="static" id="staticRadio" checked="checked"/>
+                <input type="radio" name="md" value="static" id="staticRadio"/>
                 <label for="staticRadio">Static</label>
-                <input type="radio" name="md" value="blink" id="blinkRadio"/>
-                <label for="blinkRadio">Blink</label>
                 <input type="radio" name="md" value="fade" id="fadeRadio"/>
-                <label for="fadeRadio">Fade</label>
+                <label for="fadeRadio">Flash</label>
+                <input type="radio" name="md" value="blink" id="blinkRadio"/>
+                <label for="blinkRadio">Pulse</label>
             </div>
 
             <div class="colorSelect">
                 Color 1
-                <div class="colorBox"></div>
+                <div id="cb1" class="colorBox" onclick="openCP(1)"></div>
             </div>
 
             <div class="colorSelect">
                 Color 2
-                <div class="colorBox"></div>
+                <div id="cb2" class="colorBox" onclick="openCP(2)"></div>
             </div>
         </div>
 
         <div id="settingsMain">
+            <div id="recordSettingsMain" class="settingsMainWindow">
+                <div class="modeSettingsRSV">
+                    <div class="toggle2">
+                        <input type="radio" name="msr" value="toggleRec" id="toggleRecRadio"/>
+                        <label for="toggleRecRadio">Toggle</label>
+                        <input type="radio" name="msr" value="startRec" id="startRecRadio"/>
+                        <label for="startRecRadio">Start</label>
+                        <input type="radio" name="msr" value="stopRec" id="stopRecRadio"/>
+                        <label for="stopRecRadio">Stop</label>
+                    </div>
+                </div>
+                <div class="animationSettingsDispRSV">
+                    <div class="animationSettingsRSVblock">
+                        <div class="animationSettingsRSVblockText">ON:</div> <div class="colorBox cbON"></div>
+                    </div>
+                    <div class="animationSettingsRSVblock">
+                        <div class="animationSettingsRSVblockText">OFF:</div> <div class="colorBox cbOFF"></div>
+                    </div>
+                </div>
+            </div>
 
+            <div id="streamSettingsMain" class="settingsMainWindow hiden">
+                <div class="modeSettingsRSV">
+                    <div class="toggle2">
+                        <input type="radio" name="msrs" value="toggleStr" id="toggleStrRadio"/>
+                        <label for="toggleStrRadio">Toggle</label>
+                        <input type="radio" name="msrs" value="startStr" id="startStrRadio"/>
+                        <label for="startStrRadio">Start</label>
+                        <input type="radio" name="msrs" value="stopStr" id="stopStrRadio"/>
+                        <label for="stopStrRadio">Stop</label>
+                    </div>
+                </div>
+                <div class="animationSettingsDispRSV">
+                    <div class="animationSettingsRSVblock">
+                        <div class="animationSettingsRSVblockText">ON:</div> <div class="colorBox cbON"></div>
+                    </div>
+                    <div class="animationSettingsRSVblock">
+                        <div class="animationSettingsRSVblockText">OFF:</div> <div class="colorBox cbOFF"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="vcamSettingsMain" class="settingsMainWindow hiden">
+                <div class="modeSettingsRSV">
+                    <div class="toggle2">
+                        <input type="radio" name="msrv" value="toggleVcam" id="toggleVcamRadio"/>
+                        <label for="toggleVcamRadio">Toggle</label>
+                        <input type="radio" name="msrv" value="startVcam" id="startVcamRadio"/>
+                        <label for="startVcamRadio">Start</label>
+                        <input type="radio" name="msrv" value="stopVcam" id="stopVcamRadio"/>
+                        <label for="stopVcamRadio">Stop</label>
+                    </div>
+                </div>
+                <div class="animationSettingsDispRSV">
+                    <div class="animationSettingsRSVblock">
+                        <div class="animationSettingsRSVblockText">ON:</div> <div class="colorBox cbON"></div>
+                    </div>
+                    <div class="animationSettingsRSVblock">
+                        <div class="animationSettingsRSVblockText">OFF:</div> <div class="colorBox cbOFF"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sceneSettingsMain" class="settingsMainWindow">
+                <div class="animationSettingsDispRSV colorsLeft">
+                    <div class="animationSettingsRSVblock">
+                        <div class="animationSettingsRSVblockText">ON:</div> <div class="colorBox cbON"></div>
+                    </div>
+                    <div class="animationSettingsRSVblock">
+                        <div class="animationSettingsRSVblockText">OFF:</div> <div class="colorBox cbOFF"></div>
+                    </div>
+                </div>
+                
+                <div id="sceneList" class="stList">
+                    <div class="stListBg">
+                        <div class="toggle2 tgScene" id="tgSceneList">
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div id="transitionList" class="stList">
+                    <div class="stListBg">
+                        <div class="toggle2 tgScene" id="tgTransitionList">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="settingsButtons">
             <div class="settingsButtonsBox">
-                <button class="settingsButton">Reset</button>
+                <button class="settingsButton" onclick="clearSett()">Reset</button>
                 <button class="settingsButton" onclick="hideSettings()">Cancel</button>
-                <button class="settingsButton">Save</button>
+                <button class="settingsButton" onclick="applySettings()">Save</button>
             </div>
         </div>
     </div>
 
+    <div id="mask" class="hiden" onclick="closeCP()"></div>
+
+    <div id="coloPicker1" class="colorPicker cp1 hiden">
+        
+    </div>
+
+    <div id="coloPicker2" class="colorPicker cp2 hiden">
+        
+    </div>
+
+    <script src="./../js/collors.js"></script>
     <script src="./../js/mainWindow.js"></script>
 </body>
 </html>
