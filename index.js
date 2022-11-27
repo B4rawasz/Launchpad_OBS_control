@@ -1,6 +1,8 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 
 const {WebMidi} = require('WebMidi');
+
+const sound = require("sound-play");
 
 const {WebSocket} = require('ws');
 
@@ -283,6 +285,12 @@ ipcMain.on('settings:apply', function(e, obj){
     programSettings.sett["p" + obj.id].transName = obj.transName;
   }
 
+  if (obj.type == "sound") {
+    programSettings.sett["p" + obj.id].action = "sound";
+    programSettings.sett["p" + obj.id].path = obj.path;
+    programSettings.sett["p" + obj.id].vol = obj.vol;
+  }
+
   if (obj.lightMode == "static") {
     programSettings.sett["p"+obj.id].lightMode = 0;
   }
@@ -313,6 +321,16 @@ ipcMain.on('settings:clear', function(e, idC){
   updateSettings();
 })
 
+ipcMain.on("select:file", function(e){
+  dialog.showOpenDialog(mainWindow, 
+    {
+      filters: [{ name: 'Sound', extensions: ['mp3']}], properties: ['openFile']
+    }).then(result => {
+      mainWindow.webContents.send("select:done", result.filePaths[0]);
+    }).catch(err => {
+      console.log(err);
+    });
+});
 
 
 
@@ -373,8 +391,30 @@ function handleMidiButton(bID){
       data.d.requestData.sceneName = programSettings.sett["p"+bID].sceneName;
       OBSws.send(JSON.stringify(data));
       break;
+
+
+    case "sound":
+      soundP(bID);
+      break;
     default:
       break;
+  }
+}
+
+async function soundP(bID){
+  if(programSettings.sett["p"+bID].lightMode == 1){
+    midiOUT.sendSysex([0, 32, 41, 2, 13, 3, 1, programSettings.sett["p"+bID].id, programSettings.sett["p"+bID].color2, programSettings.sett["p"+bID].color1]);
+  }else{
+    midiOUT.sendSysex([0, 32, 41, 2, 13, 3, programSettings.sett["p"+bID].lightMode, programSettings.sett["p"+bID].id, programSettings.sett["p"+bID].color1]);
+  }
+  mainWindow.webContents.send("changeStatus", programSettings.sett["p"+bID].id, programSettings.sett["p"+bID].color1);
+
+  try {
+    await sound.play(programSettings.sett["p"+bID].path, programSettings.sett["p"+bID].vol);
+    midiOUT.sendSysex([0, 32, 41, 2, 13, 3, 0, programSettings.sett["p"+bID].id, programSettings.sett["p"+bID].color2]);
+    mainWindow.webContents.send("changeStatus", programSettings.sett["p"+bID].id, programSettings.sett["p"+bID].color2);
+  } catch (e) {
+    console.log(e);
   }
 }
 
@@ -520,6 +560,16 @@ function getStatus(){
   OBSws.send(JSON.stringify(OBSrequest.getVcam));
   OBSws.send(JSON.stringify(OBSrequest.getScenes));
   OBSws.send(JSON.stringify(OBSrequest.getTrans));
+
+  updateSoundColors();
+}
+
+function updateSoundColors(){
+  for (const pad of Object.values(programSettings.sett)){
+    if(pad.action == "sound"){
+      mainWindow.webContents.send("changeStatus", pad.id, pad.color2);
+    }
+  }
 }
 
 function handleEvent(data){

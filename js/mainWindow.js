@@ -1,5 +1,5 @@
 const electron = require('electron');
-const {ipcRenderer} = electron;
+const { ipcRenderer } = electron;
 
 
 let inputSelectID = document.getElementById("inputSelectID");
@@ -32,9 +32,13 @@ let recordWindowWindow = document.getElementById("recordSettingsMain");
 let streamWindowWindow = document.getElementById("streamSettingsMain");
 let vcamWindowWindow = document.getElementById("vcamSettingsMain");
 let sceneWindowWindow = document.getElementById("sceneSettingsMain");
+let soundWindowWindow = document.getElementById("soundSettingsMain");
 
 let tgSceneList = document.getElementById("tgSceneList");
 let tgTransitionList = document.getElementById("tgTransitionList");
+
+let sVol = document.getElementById("volID");
+let fName = document.getElementById("fileName");
 
 let activeWindow;
 
@@ -51,6 +55,8 @@ let colorBox2 = document.getElementById("cb2");
 
 let color1 = 0;
 let color2 = 0;
+
+let path = "";
 
 let id;
 
@@ -180,6 +186,14 @@ ipcRenderer.on("changeStatus", function(e, id_, c_){
     }
 });
 
+ipcRenderer.on("select:done", function(e, path_){
+    path = path_;
+
+    let t = new URL(path);
+
+    fName.innerHTML = t.pathname.split("/")[t.pathname.split("/").length - 1];
+});
+
 
 /*****************************************************/
 //Buttons
@@ -307,6 +321,14 @@ function applySettings(){
                     }
                 }
             }
+
+            //source
+
+            if(element.value == "sound" && element.checked == true){
+                settingsToApply.type = "sound";
+                settingsToApply.path = path;
+                settingsToApply.vol = sVol.value / 100;
+            }
         }
     
         if(element.type == "radio" && element.name == "md" && element.checked == true){
@@ -343,6 +365,13 @@ function closeCP(){
     colorPicker2.classList.add("hiden");
     cpMask.classList.add("hiden");
 }
+
+function selectFile(){
+    ipcRenderer.send("select:file");
+}
+
+
+
 
 /*****************************************************/
 //Web logic
@@ -383,7 +412,11 @@ function updateTopMenu(screenToGo){
             activeWindow = sceneWindowWindow;
             activeWindow.classList.remove("hiden");
             break;
-    
+        case "sound":
+            activeWindow = soundWindowWindow;
+            activeWindow.classList.remove("hiden");
+            break;
+        
         default:
             break;
     }
@@ -407,7 +440,6 @@ function setColor(cpNum, colorID){
         updateColorAnim();
     }
 }
-
 
 
 /*****************************************************/

@@ -533,6 +533,65 @@ body{
     border-radius: 6px 6px 0 0;
 }
 
+#selectFile{
+    flex-grow: 4;
+
+    border-radius: 5px;
+
+    margin: 10px;
+    margin-left: 0;
+
+    background-color: var(--oxford-blue-2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    column-gap: 5vh;
+}
+
+#file{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    flex-wrap: wrap;
+}
+
+.fileB {
+
+    margin: 10px !important;
+    width: 15vw;
+    height: 5vh;
+    margin: 0;
+    border-width: 0;
+    color: var(--platinum);
+
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--oxford-blue);
+    font-size: 1rem;
+    line-height: 100%;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    border-radius: 5px;
+}
+
+.fileB:hover {
+    box-shadow: 0 0 5px var(--orange-web);
+    z-index: 1;
+}
+  
+#file-chosen{
+    margin-left: 0.3rem;
+}
+  
+
 
 /*******************************/
 
